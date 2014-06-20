@@ -4,8 +4,7 @@ var express = require('express'),
     router = express.Router();
 
 router.get('/', function (req, res, next) {
-    var index = router.options.index || '/';
-    req.url = index;
+    req.url = router.options.index || '/';
     next();
 });
 
