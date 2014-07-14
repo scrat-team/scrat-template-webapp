@@ -7,7 +7,7 @@ var path = require('path'),
 // check if the filepath is potentially malicious
 function isMalicious(filepath) {
     var ext = path.extname(filepath);
-    return ext !== '.css' && ext !== '.js' || filepath.indexOf('..') !== -1;
+    return ext !== '.css' && ext !== '.js' || filepath.indexOf('../') !== -1;
 }
 
 module.exports = function (dir) {
@@ -16,7 +16,7 @@ module.exports = function (dir) {
         logger = app.get('logger') || console,
         lastHash, cache = {};
 
-    return function (req, res, next) {
+    return function (req, res) {
         var i = req.originalUrl.indexOf('??'),
             j = req.originalUrl.indexOf('&'),
             url, ext, hash, files, contents = [], rs;
