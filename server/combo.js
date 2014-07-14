@@ -56,7 +56,7 @@ module.exports = function (dir) {
 
             res.send(rs);
         } else {
-            next();
+            res.send('I am a combo service :)');
         }
     };
 };
